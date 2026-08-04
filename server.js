@@ -41,7 +41,7 @@ mysqlCon.connect(function (err) {
     else console.log(err.message);
 })
 //================
-app.get("/signup-process",async function (req, resp) {
+app.post("/signup-process",async function (req, resp) {
     let emailid = req.query.emailid;
     let pwd = req.query.pwd;
     let utype = req.query.utype;
