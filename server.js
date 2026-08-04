@@ -41,7 +41,7 @@ mysqlCon.connect(function (err) {
     else console.log(err.message);
 })
 //================
-app.post("/signup-process",async function (req, resp) {
+app.get("/signup-process",function (req, resp) {
     let emailid = req.query.emailid;
     let pwd = req.query.pwd;
     let utype = req.query.utype;
@@ -58,7 +58,7 @@ app.post("/signup-process",async function (req, resp) {
 
 
             };
-            await transporter.sendMail(mailoptions, function (err) {
+            transporter.sendMail(mailoptions, function (err) {
                 if (err)
                     console.log(err.message);
                 else
