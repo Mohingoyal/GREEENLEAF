@@ -7,11 +7,12 @@ require('dotenv').config();//for nodemailer it is necessary
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
     service: "gmail",
+    port: 465,
     auth: {
         user: process.env.EMAIL,
         pass: process.env.PASS,
 
-    }
+    },secure:true;
 });
 //========================
 app.use(express.static("public"));
@@ -66,7 +67,7 @@ console.log("PASS exists:", !!process.env.PASS);
             //======================================
             transporter.sendMail(mailoptions, function (err) {
                 if (err)
-                    console.log(err.message);
+                    console.log(err);
                 else
                     console.log("Welcome mail sent");
 
