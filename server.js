@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
         user: process.env.EMAIL,
         pass: process.env.PASS,
 
-    },secure:true;
+    },secure:true,
 });
 //========================
 app.use(express.static("public"));
