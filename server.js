@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: process.env.EMAIL,
-        pass: process.env.PASS
+        pass: process.env.PASS,
 
     }
 });
@@ -58,6 +58,10 @@ app.get("/signup-process",function (req, resp) {
 
 
             };
+            //================================
+            console.log("EMAIL:", process.env.EMAIL);
+console.log("PASS exists:", !!process.env.PASS);
+            //======================================
             transporter.sendMail(mailoptions, function (err) {
                 if (err)
                     console.log(err.message);
