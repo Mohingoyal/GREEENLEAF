@@ -46,7 +46,7 @@ app.get("/signup-process",function (req, resp) {
     let emailid = req.query.emailid;
     let pwd = req.query.pwd;
     let utype = req.query.utype;
-    console.log(email+" and" +pwd+" and"+utype);
+    console.log(emailid+" and" +pwd+" and"+utype);
     mysqlCon.query("insert into userspro values(?,?,?,current_date(),1)", [emailid, pwd, utype], function (err) {
         if (err == null) {
             resp.send("true");
