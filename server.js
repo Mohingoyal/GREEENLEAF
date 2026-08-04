@@ -80,6 +80,22 @@ console.log("PASS exists:", !!process.env.PASS);
     })
 
 })
+app.get("/testmail", async (req, res) => {
+    try {
+        const info = await transporter.sendMail({
+            from: process.env.EMAIL,
+            to: process.env.EMAIL, // send to yourself
+            subject: "Test Mail",
+            text: "Hello from Render!"
+        });
+
+        console.log(info);
+        res.send("Mail sent");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err.message);
+    }
+});
 //===========================
 app.get("/login-process", function (req, resp) {
     let emailid = req.query.emailid;
